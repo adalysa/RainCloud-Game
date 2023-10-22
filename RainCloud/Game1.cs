@@ -6,7 +6,9 @@ namespace RainCloud
 {
     public class Game1 : Game
     {
-        Texture2D cloudTexture; 
+        Texture2D cloudTexture;
+        Vector2 cloudPosition;
+        float cloudSpeed;
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -21,6 +23,13 @@ namespace RainCloud
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            // cloudPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2,
+// _graphics.PreferredBackBufferHeight / 2);
+
+            //Rectangle # meanings: Rectangle(int x, int y, int width, int height)
+            Rectangle cloudPosition = new Rectangle(100, 100, 200, 100);
+
+            cloudSpeed = 200f;
 
             base.Initialize();
         }
@@ -40,6 +49,27 @@ namespace RainCloud
                 Exit();
 
             // TODO: Add your update logic here
+            var kstate = Keyboard.GetState();
+
+            if (kstate.IsKeyDown(Keys.Up))
+            {
+                cloudPosition.Y -= cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+
+            if (kstate.IsKeyDown(Keys.Down))
+            {
+                cloudPosition.Y += cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+
+            if (kstate.IsKeyDown(Keys.Left))
+            {
+                cloudPosition.X -= cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+
+            if (kstate.IsKeyDown(Keys.Right))
+            {
+                cloudPosition.X += cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
 
             base.Update(gameTime);
         }
@@ -57,9 +87,23 @@ namespace RainCloud
             _spriteBatch.Begin();
 
             //Rectangle # meanings: Rectangle(int x, int y, int width, int height)
-            Rectangle destinationRectangle = new Rectangle(100, 100, 200, 100);
+            //Rectangle cloudPosition = new Rectangle(100, 100, 200, 100);
 
-            _spriteBatch.Draw(cloudTexture, destinationRectangle, Color.White);
+            //_spriteBatch.Draw(cloudTexture, cloudPosition, Color.White);
+
+            _spriteBatch.Draw(
+                cloudTexture,
+                cloudPosition,
+                null,
+                Color.White,
+                0f,
+                new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),
+                Vector2.One,
+                SpriteEffects.None,
+                0f
+            );
+
+
             _spriteBatch.End();
 
             base.Draw(gameTime);
