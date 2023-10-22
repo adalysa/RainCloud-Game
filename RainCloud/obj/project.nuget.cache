@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "JP/1xCUe68M1e0aD0evnHTNiXQllPqp6SJgJAaLu6ZoIthgdHabqOeoYhN0J/9+w7gfEkoEOiPTj6WB/CsVI6A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Addy's Computer\\source\\repos\\RainCloud\\RainCloud\\RainCloud.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Addy's Computer\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\Addy's Computer\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512"
+  ],
+  "logs": []
+}
