@@ -96,11 +96,11 @@ namespace RainCloud
                 cloudPosition,
                 null,
                 Color.White,
-                0f,
+                0.5f, # rotation
                 new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),
-                Vector2.One,
+                0.5f,  # scale 0 - 1f
                 SpriteEffects.None,
-                0f
+                .1f
             );
 
 
