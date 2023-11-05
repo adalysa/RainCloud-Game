@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Threading;
 
 namespace RainCloud
 {
@@ -9,6 +10,7 @@ namespace RainCloud
         Texture2D cloudTexture;
         Vector2 cloudPosition;
         float cloudSpeed;
+        float cloudSize;
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -30,6 +32,7 @@ namespace RainCloud
             Rectangle cloudPosition = new Rectangle(100, 100, 200, 100);
 
             cloudSpeed = 200f;
+            cloudSize = 0.1f;
 
             base.Initialize();
         }
@@ -72,6 +75,7 @@ namespace RainCloud
             }
 
             base.Update(gameTime);
+
         }
 
         protected override void Draw(GameTime gameTime)
@@ -96,9 +100,9 @@ namespace RainCloud
                 cloudPosition,
                 null,
                 Color.White,
-                0.5f, # rotation
+                0.0f, // rotation
                 new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),
-                0.5f,  # scale 0 - 1f
+                cloudSize,  // scale 0 - 1f
                 SpriteEffects.None,
                 .1f
             );
