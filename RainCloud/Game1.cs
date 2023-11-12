@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
+using System.Threading;
 
 namespace RainCloud
 {
@@ -15,6 +17,7 @@ namespace RainCloud
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
 
         public Game1()
         {
@@ -34,10 +37,10 @@ namespace RainCloud
             Vector2 cloudPosition = new Vector2(100, 100);
 
             cloudSpeed = 200f;
-            cloudSize = 0.1f;
 
             Viewport viewport1 = graphics.GraphicsDevice.Viewport;
             Vector2 screenCenter = new Vector2(viewport1.Width / 2f, viewport1.Height / 2f);
+            cloudSize = .3f;
 
             base.Initialize();
         }
@@ -53,6 +56,9 @@ namespace RainCloud
 
         protected override void Update(GameTime gameTime)
         {
+            
+            cloudSize -= (float).01 * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -79,7 +85,13 @@ namespace RainCloud
                 cloudPosition.X += cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
+            if (cloudSize <= 0.0)
+            {
+                Debug.WriteLine("GAME OVER!");
+            }
+
             base.Update(gameTime);
+
         }
 
         protected override void Draw(GameTime gameTime)
@@ -110,6 +122,30 @@ namespace RainCloud
                 SpriteEffects.None,     //Depth
                 .1f
             );
+
+            _spriteBatch.Draw(
+                cloudTexture,
+                new Vector2(200,300),
+                null,
+                Color.White,
+                0.0f, // rotation
+                new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),
+                0.1f,  // scale 0 - 1f
+                SpriteEffects.None,
+                .1f
+            );
+
+            _spriteBatch.Draw(
+                cloudTexture,
+                new Vector2(400, 200),
+                null,
+                Color.White,
+                0.0f, // rotation
+                new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),
+                0.1f,  // scale 0 - 1f
+                SpriteEffects.None,
+                .1f
+             );
 
 
             _spriteBatch.End();
