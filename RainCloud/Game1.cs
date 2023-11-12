@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 using System.Threading;
 
 namespace RainCloud
@@ -14,6 +15,7 @@ namespace RainCloud
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
 
         public Game1()
         {
@@ -32,7 +34,7 @@ namespace RainCloud
             Rectangle cloudPosition = new Rectangle(100, 100, 200, 100);
 
             cloudSpeed = 200f;
-            cloudSize = 0.1f;
+            cloudSize = .3f;
 
             base.Initialize();
         }
@@ -48,6 +50,9 @@ namespace RainCloud
 
         protected override void Update(GameTime gameTime)
         {
+            
+            cloudSize -= (float).01 * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -72,6 +77,11 @@ namespace RainCloud
             if (kstate.IsKeyDown(Keys.Right))
             {
                 cloudPosition.X += cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            }
+
+            if (cloudSize > 0.0)
+            {
+                Debug.WriteLine("GAME OVER!");
             }
 
             base.Update(gameTime);
