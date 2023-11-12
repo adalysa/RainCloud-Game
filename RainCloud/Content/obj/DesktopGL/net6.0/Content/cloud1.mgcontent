@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Addy's Computer/source/repos/RainCloud/RainCloud/Content/cloud1.png</SourceFile>
-  <SourceTime>2023-10-20T17:56:18.2131334-05:00</SourceTime>
-  <DestFile>C:/Users/Addy's Computer/source/repos/RainCloud/RainCloud/Content/bin/DesktopGL/Content/cloud1.xnb</DestFile>
-  <DestTime>2023-10-22T13:43:03.8304409-05:00</DestTime>
+  <SourceFile>C:/Users/Addy's Computer/RainCloud-Game/RainCloud/Content/cloud1.png</SourceFile>
+  <SourceTime>2023-11-05T08:48:39.3650413-06:00</SourceTime>
+  <DestFile>C:/Users/Addy's Computer/RainCloud-Game/RainCloud/Content/bin/DesktopGL/Content/cloud1.xnb</DestFile>
+  <DestTime>2023-11-05T09:09:47.1629454-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T06:44:56-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -9,6 +9,9 @@ namespace RainCloud
         Texture2D cloudTexture;
         Vector2 cloudPosition;
         float cloudSpeed;
+        float cloudSize;
+        Viewport viewport1;
+        Vector2 screenCenter; 
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -24,12 +27,17 @@ namespace RainCloud
         {
             // TODO: Add your initialization logic here
             // cloudPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2,
-// _graphics.PreferredBackBufferHeight / 2);
+            // _graphics.PreferredBackBufferHeight / 2);
 
             //Rectangle # meanings: Rectangle(int x, int y, int width, int height)
-            Rectangle cloudPosition = new Rectangle(100, 100, 200, 100);
+
+            Vector2 cloudPosition = new Vector2(100, 100);
 
             cloudSpeed = 200f;
+            cloudSize = 0.1f;
+
+            Viewport viewport1 = graphics.GraphicsDevice.Viewport;
+            Vector2 screenCenter = new Vector2(viewport1.Width / 2f, viewport1.Height / 2f);
 
             base.Initialize();
         }
@@ -92,14 +100,14 @@ namespace RainCloud
             //_spriteBatch.Draw(cloudTexture, cloudPosition, Color.White);
 
             _spriteBatch.Draw(
-                cloudTexture,
-                cloudPosition,
-                null,
-                Color.White,
-                0.5f, # rotation
-                new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),
-                0.5f,  # scale 0 - 1f
-                SpriteEffects.None,
+                cloudTexture,   //Texture 
+                cloudPosition,  //Position
+                null,           //Source Rectangle 
+                Color.White,    //Color
+                0f,           //Rotation
+                screenCenter,   //Origin
+                cloudSize,      //scale 0 - 1f
+                SpriteEffects.None,     //Depth
                 .1f
             );
 
