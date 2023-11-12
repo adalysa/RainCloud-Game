@@ -117,6 +117,30 @@ namespace RainCloud
                 .1f
             );
 
+            _spriteBatch.Draw(
+                cloudTexture,
+                new Vector2(200,300),
+                null,
+                Color.White,
+                0.0f, // rotation
+                new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),
+                0.1f,  // scale 0 - 1f
+                SpriteEffects.None,
+                .1f
+            );
+
+            _spriteBatch.Draw(
+                cloudTexture,
+                new Vector2(400, 200),
+                null,
+                Color.White,
+                0.0f, // rotation
+                new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),
+                0.1f,  // scale 0 - 1f
+                SpriteEffects.None,
+                .1f
+             );
+
 
             _spriteBatch.End();
 
