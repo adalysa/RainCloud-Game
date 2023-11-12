@@ -79,7 +79,7 @@ namespace RainCloud
                 cloudPosition.X += cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
 
-            if (cloudSize > 0.0)
+            if (cloudSize <= 0.0)
             {
                 Debug.WriteLine("GAME OVER!");
             }
