@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
@@ -16,6 +16,7 @@ namespace RainCloud
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        public static CloudMovement KeyCloudMovement { get; private set; }
 
         public Game1()
         {
@@ -40,6 +41,8 @@ namespace RainCloud
 
             cloudSize = .3f;
 
+            CloudMovement = new KeyCloudMovement();
+
             base.Initialize();
         }
 
@@ -61,26 +64,11 @@ namespace RainCloud
                 Exit();
 
             // TODO: Add your update logic here
-            var kstate = Keyboard.GetState();
+            CloudMovement.KeyCloudMovement(cloudPosition, cloudSpeed, gameTime);
 
-            if (kstate.IsKeyDown(Keys.Up))
+            if (cloudSize <= 0.0)
             {
-                cloudPosition.Y -= cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-
-            if (kstate.IsKeyDown(Keys.Down))
-            {
-                cloudPosition.Y += cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-
-            if (kstate.IsKeyDown(Keys.Left))
-            {
-                cloudPosition.X -= cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            }
-
-            if (kstate.IsKeyDown(Keys.Right))
-            {
-                cloudPosition.X += cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Debug.WriteLine("GAME OVER!");
             }
 
             if (cloudSize <= 0.0)
@@ -119,7 +107,7 @@ namespace RainCloud
                 new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),   //Origin
                 cloudSize,      //scale 0 - 1f
                 SpriteEffects.None,     //Depth
-                .1f
+		.1f
             );
 
             _spriteBatch.Draw(
