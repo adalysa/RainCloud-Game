@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using System;
+using System.Diagnostics;
 
-namespace RainCloud
+namespace RainCloud2
 {
-    public class KeyCloudMovement
+    public class CloudMovement
     {
-        public static void KeyCloudMovement(Vector2 cloudPosition, float cloudSpeed, GameTime gameTime)
+        public static Vector2 KeyCloudMovement(Vector2 cloudPosition, float cloudSpeed, GameTime gameTime)
         {
             var kstate = Keyboard.GetState();
 
@@ -27,6 +30,8 @@ namespace RainCloud
             {
                 cloudPosition.X += cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
+
+            return cloudPosition;
         }
     }
 }

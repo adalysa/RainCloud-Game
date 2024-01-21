@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using System.Threading;
+using RainCloud2;
 
 namespace RainCloud
 {
@@ -15,8 +16,6 @@ namespace RainCloud
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
-        public static CloudMovement KeyCloudMovement { get; private set; }
 
         public Game1()
         {
@@ -41,8 +40,6 @@ namespace RainCloud
 
             cloudSize = .3f;
 
-            CloudMovement = new KeyCloudMovement();
-
             base.Initialize();
         }
 
@@ -64,7 +61,7 @@ namespace RainCloud
                 Exit();
 
             // TODO: Add your update logic here
-            CloudMovement.KeyCloudMovement(cloudPosition, cloudSpeed, gameTime);
+            cloudPosition = CloudMovement.KeyCloudMovement(cloudPosition, cloudSpeed, gameTime);
 
             if (cloudSize <= 0.0)
             {
