@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Addy's Computer/RainCloud-Game/RainCloud/Content/cloud1.png</File>
+    <File>C:/Users/Addy's Computer/source/repos/RainCloud-Game/RainCloud/Content/cloud1.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
