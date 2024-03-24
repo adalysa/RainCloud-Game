@@ -59,17 +59,7 @@ namespace RainCloud
 
             _sprites = new List<Sprite>()
             {
-                new Cloud(cloudTexture)
-                {
-                cloudPosition,  //Position
-                null,           //Source Rectangle 
-                Color.White,    //Color
-                0f,           //Rotation
-                new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),   //Origin
-                cloudSize,      //scale 0 - 1f
-                SpriteEffects.None,     //Depth
-		        .1f
-                }
+    
              };
         }
 
@@ -102,6 +92,7 @@ namespace RainCloud
 
         protected override void Draw(GameTime gameTime)
         {
+
             GraphicsDevice.Clear(Color.LightBlue);
 
             //This is how you set colors w/ rgba values:
@@ -119,7 +110,7 @@ namespace RainCloud
 
             //_spriteBatch.Draw(cloudTexture, cloudPosition, Color.White);
             //Vector2 cloudPosition = new Vector2(800, 100);
-            /*
+            
             _spriteBatch.Draw(
                 cloudTexture,   //Texture 
                 cloudPosition,  //Position
@@ -131,7 +122,7 @@ namespace RainCloud
                 SpriteEffects.None,     //Depth
 		        .1f
             );
-
+           
             _spriteBatch.Draw(
                 cloudTexture,
                 new Vector2(200,300),
@@ -143,7 +134,7 @@ namespace RainCloud
                 SpriteEffects.None,
                 .1f
             );
-
+            /*
             _spriteBatch.Draw(
                 cloudTexture,
                 new Vector2(400, 200),
@@ -158,7 +149,8 @@ namespace RainCloud
             */
 
             foreach (var sprite in _sprites)
-                sprite.Draw(gameTime, spriteBatch);
+
+                sprite.Draw(gameTime, _spriteBatch);
 
             _spriteBatch.End();
 

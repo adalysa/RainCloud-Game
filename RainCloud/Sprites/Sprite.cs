@@ -75,7 +75,7 @@ namespace RainCloud.Sprites
             _texture.GetData(TextureData);
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(_texture, Position, null, Colour, _rotation, Origin, 1, SpriteEffects.None, 0);
         }
