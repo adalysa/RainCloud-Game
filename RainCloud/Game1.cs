@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using System.Threading;
-using RainCloud.PlayerMovement;
+//using RainCloud.PlayerMovement;
 using System.Collections.Generic;
 using RainCloud.Sprites;
 
@@ -11,10 +11,10 @@ namespace RainCloud
 {
     public class Game1 : Game
     {
-        Texture2D cloudTexture;
+        /*Texture2D cloudTexture;
         Vector2 cloudPosition;
         float cloudSpeed;
-        float cloudSize;
+        float cloudSize;*/
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -41,7 +41,7 @@ namespace RainCloud
 
             //Rectangle cloudPosition = new Rectangle(100, 100, 100, 100);
 
-            cloudSpeed = 200f;
+            //cloudSpeed = 200f;
 
             cloudSize = .3f;
 
@@ -58,10 +58,7 @@ namespace RainCloud
 
             _sprites = new List<Sprite>()
             {
-                //new Cloud(cloudTexture)
-                //{
-                //    Position = new Vector2(x ,y)
-                //}
+                new Cloud(cloudTexture)
             };
         }
 
@@ -73,8 +70,7 @@ namespace RainCloud
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
-            cloudPosition = CloudMovement.KeyCloudMovement(cloudPosition, cloudSpeed, gameTime);
+            //cloudPosition = CloudMovement.KeyCloudMovement(cloudPosition, cloudSpeed, gameTime);
 
             if (cloudSize <= 0.0)
                 {
