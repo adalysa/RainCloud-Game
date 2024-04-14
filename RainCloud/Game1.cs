@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Diagnostics;
 using System.Threading;
-using PlayerMovement;
+using RainCloud.PlayerMovement;
 using System.Collections.Generic;
 using RainCloud.Sprites;
 
@@ -56,11 +56,13 @@ namespace RainCloud
 
             cloudTexture = Content.Load<Texture2D>("cloud1");
 
-
             _sprites = new List<Sprite>()
             {
-    
-             };
+                //new Cloud(cloudTexture)
+                //{
+                //    Position = new Vector2(x ,y)
+                //}
+            };
         }
 
         protected override void Update(GameTime gameTime)
@@ -98,8 +100,6 @@ namespace RainCloud
             //This is how you set colors w/ rgba values:
             //Color cl = new Color(10, 20, 10, 0);
             //GraphicsDevice.Clear(cl);
-
-            // TODO: Add your drawing code here
 
             _spriteBatch.Begin();
 

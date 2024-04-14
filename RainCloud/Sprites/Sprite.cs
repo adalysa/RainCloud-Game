@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -136,7 +137,7 @@ namespace RainCloud.Sprites
 
         public virtual void OnCollide(Sprite sprite)
         {
-
+            Debug.WriteLine("IT COLLIDED");
         }
 
         public object Clone()

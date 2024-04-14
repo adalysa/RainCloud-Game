@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Diagnostics;
 
-namespace PlayerMovement
+namespace RainCloud.PlayerMovement
 {
     public class CloudMovement
     {
