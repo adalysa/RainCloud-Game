@@ -11,10 +11,10 @@ namespace RainCloud
 {
     public class Game1 : Game
     {
-        /*Texture2D cloudTexture;
+        Texture2D cloudTexture;
         Vector2 cloudPosition;
         float cloudSpeed;
-        float cloudSize;*/
+        float cloudSize;
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -32,18 +32,13 @@ namespace RainCloud
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
-            //Rectangle # meanings: Rectangle(int x, int y, int width, int height)
-
-            cloudPosition = new Vector2(
-                GraphicsDevice.Viewport.Bounds.Width / 2,
-                GraphicsDevice.Viewport.Bounds.Height / 2);
-
+            
             //Rectangle cloudPosition = new Rectangle(100, 100, 100, 100);
 
             //cloudSpeed = 200f;
 
             cloudSize = .3f;
+            //Rectangle # meanings: Rectangle(int x, int y, int width, int height)
 
             base.Initialize();
         }
@@ -59,12 +54,23 @@ namespace RainCloud
             _sprites = new List<Sprite>()
             {
                 new Cloud(cloudTexture)
+                {
+                    cloudPosition = new Vector2(GraphicsDevice.Viewport.Bounds.Width / 2,GraphicsDevice.Viewport.Bounds.Height / 2)
+                },
+                new Sprite(cloudTexture)
+                {
+                    cloudPosition = new Vector2(250, 300),
+                    cloudSize = .1f
+                }
             };
+
+             Debug.WriteLine("1");
+
         }
 
         protected override void Update(GameTime gameTime)
         {
-            
+            /*  Moving this to cloud.cs update
             cloudSize -= (float).01 * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -81,6 +87,15 @@ namespace RainCloud
                 {
                 Debug.WriteLine("GAME OVER!");
                 }
+ */ 
+            foreach (var sprite in _sprites)
+                {
+                    sprite.Update(gameTime);
+                    Debug.WriteLine("2");
+                }
+
+
+            PostUpdate(gameTime);
 
             base.Update(gameTime);
 
@@ -107,6 +122,7 @@ namespace RainCloud
             //_spriteBatch.Draw(cloudTexture, cloudPosition, Color.White);
             //Vector2 cloudPosition = new Vector2(800, 100);
             
+            /*
             _spriteBatch.Draw(
                 cloudTexture,   //Texture 
                 cloudPosition,  //Position
@@ -115,8 +131,8 @@ namespace RainCloud
                 0f,           //Rotation
                 new Vector2(cloudTexture.Width / 2, cloudTexture.Height / 2),   //Origin
                 cloudSize,      //scale 0 - 1f
-                SpriteEffects.None,     //Depth
-		        .1f
+                SpriteEffects.None,     //effects
+		        .1f               //depth
             );
            
             _spriteBatch.Draw(
@@ -130,7 +146,7 @@ namespace RainCloud
                 SpriteEffects.None,
                 .1f
             );
-            /*
+
             _spriteBatch.Draw(
                 cloudTexture,
                 new Vector2(400, 200),
@@ -187,6 +203,13 @@ namespace RainCloud
                     i--;
                 }
             }
+        }
+
+        public void Quit()
+        {
+            // Call this from other classes to exit
+            
+            this.Exit();
         }
 
     }

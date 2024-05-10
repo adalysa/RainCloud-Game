@@ -17,23 +17,25 @@ namespace RainCloud.Sprites
 
         protected float _rotation;
 
-        protected KeyboardState _currentKey;
+        public float cloudSize;
+
+        protected KeyboardState kstate;
 
         protected KeyboardState _previousKey;
 
         public Vector2 Origin;
 
-        public Vector2 Position;
+        public Vector2 cloudPosition;
 
         public Rectangle Rectangle
         {
             get
             {
-                return new Rectangle((int)Position.X - (int)Origin.X, (int)Position.Y - (int)Origin.Y, _texture.Width, _texture.Height);
+                return new Rectangle((int)cloudPosition.X - (int)Origin.X, (int)cloudPosition.Y - (int)Origin.Y, _texture.Width, _texture.Height);
             }
         }
 
-        public List<Sprite> Children { get; set; }
+        public List<Sprite> Children { get; set; }  //do we need this?
 
         public Color Colour { get; set; }
 
@@ -57,7 +59,7 @@ namespace RainCloud.Sprites
             {
                 return Matrix.CreateTranslation(new Vector3(-Origin, 0)) *
                   Matrix.CreateRotationZ(_rotation) *
-                  Matrix.CreateTranslation(new Vector3(Position, 0));
+                  Matrix.CreateTranslation(new Vector3(cloudPosition, 0));
             }
         }
 
@@ -68,17 +70,36 @@ namespace RainCloud.Sprites
             // The default origin in the centre of the sprite
             Origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
 
-            Children = new List<Sprite>();
+            Children = new List<Sprite>();  //Do we need this?
 
             Colour = Color.White;
 
             TextureData = new Color[_texture.Width * _texture.Height];
             _texture.GetData(TextureData);
+
+            cloudSize = .3f;
         }
 
-         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public override void Update(GameTime gameTime)
         {
-            spriteBatch.Draw(_texture, Position, null, Colour, _rotation, Origin, 1, SpriteEffects.None, 0);
+
+        }
+
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(
+                _texture,   //Texture 
+                cloudPosition,  //Position
+                null,           //Source Rectangle 
+                Color.White,    //Color
+                0f,           //Rotation
+                Origin,   //Origin
+                cloudSize,  //will be cloudSize,      //scale 0 - 1f
+                SpriteEffects.None,     //Effects
+		        .1f  //Depth
+            );
+            // spriteBatch.Draw(_texture, Position, null, Colour, _rotation, Origin, Size, SpriteEffects.None, 0);
+
         }
 
         public bool Intersects(Sprite sprite)
