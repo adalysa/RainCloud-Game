@@ -70,14 +70,14 @@ namespace RainCloud.Sprites
             // The default origin in the centre of the sprite
             Origin = new Vector2(_texture.Width / 2, _texture.Height / 2);
 
-            Children = new List<Sprite>();  //Do we need this?
+            Children = new List<Sprite>();  //Do we need this? Only if we need to group sprites, like to make the ship and bullets dissapear when the ship is destroyed.
 
             Colour = Color.White;
 
             TextureData = new Color[_texture.Width * _texture.Height];
             _texture.GetData(TextureData);
 
-            cloudSize = .3f;
+            cloudSize = 1f;
         }
 
         public override void Update(GameTime gameTime)
@@ -159,6 +159,7 @@ namespace RainCloud.Sprites
         public virtual void OnCollide(Sprite sprite)
         {
             Debug.WriteLine("IT COLLIDED");
+            Debug.WriteLine(Rectangle);
         }
 
         public object Clone()

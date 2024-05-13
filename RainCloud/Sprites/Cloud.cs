@@ -60,10 +60,6 @@ namespace RainCloud.Sprites
                 Debug.WriteLine("GAME OVER!");
                 }
 
-            if (cloudSize <= 0.0)
-                {
-                Debug.WriteLine("GAME OVER!");
-                }
          }
     }
 }

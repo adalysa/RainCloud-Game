@@ -12,10 +12,12 @@ namespace RainCloud
     public class Game1 : Game
     {
         Texture2D cloudTexture;
+        Texture2D cloud2Texture;
+/*
         Vector2 cloudPosition;
         float cloudSpeed;
         float cloudSize;
-
+*/
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -37,7 +39,7 @@ namespace RainCloud
 
             //cloudSpeed = 200f;
 
-            cloudSize = .3f;
+            //cloudSize = .3f;
             //Rectangle # meanings: Rectangle(int x, int y, int width, int height)
 
             base.Initialize();
@@ -50,6 +52,7 @@ namespace RainCloud
             // TODO: use this.Content to load your game content here
 
             cloudTexture = Content.Load<Texture2D>("cloud1");
+            cloud2Texture = Content.Load<Texture2D>("cloud2");
 
             _sprites = new List<Sprite>()
             {
@@ -57,15 +60,12 @@ namespace RainCloud
                 {
                     cloudPosition = new Vector2(GraphicsDevice.Viewport.Bounds.Width / 2,GraphicsDevice.Viewport.Bounds.Height / 2)
                 },
-                new Sprite(cloudTexture)
+                new Sprite(cloud2Texture)
                 {
                     cloudPosition = new Vector2(250, 300),
-                    cloudSize = .1f
+                    cloudSize = 1f
                 }
             };
-
-             Debug.WriteLine("1");
-
         }
 
         protected override void Update(GameTime gameTime)
@@ -91,9 +91,7 @@ namespace RainCloud
             foreach (var sprite in _sprites)
                 {
                     sprite.Update(gameTime);
-                    Debug.WriteLine("2");
                 }
-
 
             PostUpdate(gameTime);
 
@@ -185,7 +183,8 @@ namespace RainCloud
                         spriteA.OnCollide(spriteB);
                 }
             }
-
+        }
+/* don't need sprite count right now, this is optimization
             int count = _sprites.Count;
             for (int i = 0; i < count; i++)
             {
@@ -203,8 +202,7 @@ namespace RainCloud
                     i--;
                 }
             }
-        }
-
+*/
         public void Quit()
         {
             // Call this from other classes to exit
