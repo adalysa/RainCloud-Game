@@ -23,6 +23,7 @@ namespace RainCloud.Sprites
         // public Vector2 cloudPosition;
          
         public float cloudSpeed = 200f;
+        public bool isPlayer = true;
 
         // public float cloudSize = .3f;
 
@@ -56,10 +57,19 @@ namespace RainCloud.Sprites
                 cloudPosition.X += cloudSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             if (cloudSize <= 0.0)
-                {
+            {
                 Debug.WriteLine("GAME OVER!");
-                }
+            }
 
-         }
+            /*if (!this.isPlayer)
+            {
+                this.IsRemoved = true;
+            }*/
+        }
+
+        public virtual void OnCollide(Sprite sprite)
+        {
+            // If the sprite should be removed on collision, set IsRemoved to true
+        }
     }
 }

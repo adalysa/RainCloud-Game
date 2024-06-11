@@ -43,6 +43,8 @@ namespace RainCloud.Sprites
 
         public float RotationVelocity = 3f;
 
+        public bool isPlayer = false;
+
         public float LinearVelocity = 4f;
 
         public Sprite Parent;
@@ -82,7 +84,7 @@ namespace RainCloud.Sprites
 
         public override void Update(GameTime gameTime)
         {
-
+            IsRemoved = false;
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
@@ -158,6 +160,13 @@ namespace RainCloud.Sprites
 
         public virtual void OnCollide(Sprite sprite)
         {
+            // If the sprite should be removed on collision, set IsRemoved to true
+            if (!this.isPlayer)
+            {
+                this.IsRemoved = true;
+            }
+
+            Debug.WriteLine(sprite);
             Debug.WriteLine("IT COLLIDED");
             Debug.WriteLine(Rectangle);
         }

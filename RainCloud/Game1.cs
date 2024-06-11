@@ -73,7 +73,7 @@ namespace RainCloud
             /*  Moving this to cloud.cs update
             cloudSize -= (float).01 * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(Index.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             //cloudPosition = CloudMovement.KeyCloudMovement(cloudPosition, cloudSpeed, gameTime);
@@ -166,12 +166,10 @@ namespace RainCloud
 
             base.Draw(gameTime);
         }
+
         protected void PostUpdate(GameTime gameTime)
         {
             // 1. Check collision between all current "Sprites"
-            // 2. Add "Children" to the list of "_sprites" and clear
-            // 3. Remove all "IsRemoved" sprites
-
             foreach (var spriteA in _sprites)
             {
                 foreach (var spriteB in _sprites)
@@ -182,6 +180,26 @@ namespace RainCloud
                     if (spriteA.Intersects(spriteB))
                         spriteA.OnCollide(spriteB);
                 }
+            }
+
+            // 2. Collect all sprites that need to be removed in a separate list
+            List<Sprite> spritesToRemove = new List<Sprite>();
+
+            for (int i = 0; i < _sprites.Count; i++)
+            {
+                if (_sprites[i].IsRemoved)
+                {
+                    if (!_sprites[i].isPlayer)
+                    {
+                        spritesToRemove.Add(_sprites[i]);
+                    }
+                }
+            }
+
+            // 3. Remove the sprites in the collected list
+            foreach (var sprite in spritesToRemove)
+            {
+                _sprites.Remove(sprite);
             }
         }
 /* don't need sprite count right now, this is optimization
