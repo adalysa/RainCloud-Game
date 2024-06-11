@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RainCloud")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+48bbe4722dd006332468b921c37b3cad72ae814e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4a8d049e4b94d54eb8397937c476062296c07195")]
 [assembly: System.Reflection.AssemblyProductAttribute("RainCloud")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RainCloud")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
